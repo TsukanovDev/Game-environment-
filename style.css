@@ -19,7 +19,7 @@
 
 
 
-canvas {
+#canvas1 {
 	background: url('background.png');
 }
 
@@ -36,7 +36,7 @@ canvas {
 	top: 50px;
 	left: -100px;
 	transition: 0.3s;
-	animation: wobble ease-in-out 1.5s infinite;
+	/*animation: wobble ease-in-out 1.5s infinite;*/
 	pointer-events: none;
 
 
@@ -47,7 +47,7 @@ canvas {
 	top: 50px;
 	right: -100px;
 	transition: 0.3s;
-	animation: wobble ease-in-out 1.6s infinite;
+	/*animation: wobble ease-in-out 1.6s infinite;*/
 	pointer-events: none;
 }
 
