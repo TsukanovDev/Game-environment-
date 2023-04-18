@@ -74,3 +74,8 @@ canvas:hover~#leaves_right {
 		top: 50px;
 	}
 }
+
+
+#owlbear {
+	display: none;
+}

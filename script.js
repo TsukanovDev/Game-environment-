@@ -29,16 +29,22 @@ window.addEventListener('load', function () {
 	class Owlbear {
 		constructor(game) {
 			this.game = game;
-			this.width = 100;
-			this.height = 100;
+
+			this.spriteWidht = 200;
+			this.spriteHeight = 200;
+
+			this.width = this.spriteHeight;
+			this.height = this.spriteWidht;
 			this.x = 200;
 			this.y = 200;
 			this.speedX = 0;
 			this.speedY = 0;
 			this.maxSpeed = 10;
+			this.image = owlbear;
 		}
 		draw(context) {
 			context.fillRect(this.x, this.y, this.width, this.height);
+			context.drawImage(this.image, 0 * this.spriteWidht, 6 * this.spriteWidht, this.spriteWidht, this.spriteHeight, this.x, this.y, this.width, this.height);
 		}
 
 		setSpeed(speedX, speedY) {
@@ -81,7 +87,7 @@ window.addEventListener('load', function () {
 			if (this.y < 0 + this.game.topMargin) {
 				this.y = 0 + this.game.topMargin;
 			} else if (this.y > this.game.height - this.height) {
-				this.y = this.game.height - this.height
+				this.y = this.game.height - this.height;
 			}
 		}
 	}
@@ -122,4 +128,5 @@ window.addEventListener('load', function () {
 	animate();
 
 });
+//39
 
