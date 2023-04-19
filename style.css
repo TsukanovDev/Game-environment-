@@ -76,6 +76,9 @@ canvas:hover~#leaves_right {
 }
 
 
-#owlbear {
+#owlbear,
+#bush,
+#plant,
+#grass {
 	display: none;
 }
