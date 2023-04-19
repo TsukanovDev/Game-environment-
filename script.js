@@ -199,15 +199,18 @@ window.addEventListener('load', function () {
 			this.topMargin = 200;
 			this.lastkey = undefined;
 			this.input = new InputHandler(this);
-			this.Owlbear = new Owlbear(this);
+			this.owlbear = new Owlbear(this);
 			this.numbetOfPlants = 10;
 			this.plants = [];
+			this.gameObject = [];
 
 		}
 		render(context, deltaTime) {
-			this.Owlbear.draw(context);
-			this.Owlbear.update(deltaTime);
+			this.gameObject = [this.owlbear, ...this.plants];
 			this.plants.forEach(plant => plant.draw(context));
+			this.owlbear.draw(context);
+			this.owlbear.update(deltaTime);
+
 		}
 		init() {
 
@@ -227,9 +230,9 @@ window.addEventListener('load', function () {
 	let lastTime = 0;
 
 
-	function animate(timeStep) {
-		const deltaTime = timeStep - lastTime;
-		lastTime = timeStep;
+	function animate(timeStamp) {
+		const deltaTime = timeStamp - lastTime;
+		lastTime = timeStamp;
 
 
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
