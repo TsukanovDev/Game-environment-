@@ -32,6 +32,9 @@ window.addEventListener('load', function () {
 
 			this.spriteWidht = 200;
 			this.spriteHeight = 200;
+			this.frameX = 0;
+			this.frameY = 6;
+			this.maxFrame = 30;
 
 			this.width = this.spriteHeight;
 			this.height = this.spriteWidht;
@@ -39,12 +42,12 @@ window.addEventListener('load', function () {
 			this.y = 200;
 			this.speedX = 0;
 			this.speedY = 0;
-			this.maxSpeed = 10;
-			this.image = owlbear;
+			this.maxSpeed = 5;
+			this.image = document.getElementById('owlbear');
 		}
 		draw(context) {
-			context.fillRect(this.x, this.y, this.width, this.height);
-			context.drawImage(this.image, 0 * this.spriteWidht, 6 * this.spriteWidht, this.spriteWidht, this.spriteHeight, this.x, this.y, this.width, this.height);
+			//context.fillRect(this.x, this.y, this.width, this.height);
+			context.drawImage(this.image, this.frameX * this.spriteWidht, this.frameY * this.spriteHeight, this.spriteWidht, this.spriteHeight, this.x, this.y, this.width, this.height);
 		}
 
 		setSpeed(speedX, speedY) {
@@ -55,22 +58,47 @@ window.addEventListener('load', function () {
 		update() {
 			if (this.game.lastkey == 'PArrowLeft') {
 				this.setSpeed(-this.maxSpeed, 0);
+				this.frameY = 3;
+
+
+			} else if (this.game.lastkey == 'RArrowLeft' && this.speedX < 0) {
+				this.setSpeed(0, 0);
+				this.frameY = 2;
+
 
 
 			} else if (this.game.lastkey == 'PArrowRight') {
 				this.setSpeed(this.maxSpeed, 0);
+				this.frameY = 5;
+
+			} else if (this.game.lastkey == 'RArrowRight' && this.speedX > 0) {
+				this.setSpeed(0, 0);
+				this.frameY = 4;
+
+
+
 
 
 			} else if (this.game.lastkey == 'PArrowUp') {
-				this.setSpeed(0, -this.maxSpeed);
+				this.setSpeed(0, -this.maxSpeed * 0.6);
+				this.frameY = 7;
+			} else if (this.game.lastkey == 'RArrowUp' && this.speedY < 0) {
+				this.setSpeed(0, 0);
+				this.frameY = 6;
+
+
+
 
 			} else if (this.game.lastkey == 'PArrowDown') {
-				this.setSpeed(0, this.maxSpeed);
+				this.setSpeed(0, this.maxSpeed * 0.6);
+				this.frameY = 1;
 
-
-
-			} else {
+			} else if (this.game.lastkey == 'RArrowDown' && this.speedY > 0) {
 				this.setSpeed(0, 0);
+				this.frameY = 0;
+
+
+
 			}
 			this.x += this.speedX;
 			this.y += this.speedY;
@@ -88,6 +116,13 @@ window.addEventListener('load', function () {
 				this.y = 0 + this.game.topMargin;
 			} else if (this.y > this.game.height - this.height) {
 				this.y = this.game.height - this.height;
+			}
+			//sprite animation
+
+			if (this.frameX < this.maxFrame) {
+				this.frameX++;
+			} else {
+				this.frameX = 0;
 			}
 		}
 	}
